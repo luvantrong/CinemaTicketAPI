@@ -6,10 +6,16 @@ var logger = require("morgan");
 const session = require("express-session");
 const mongoose = require("mongoose");
 
+//import các model, thứ tự rất quan trọng
+require("./components/movies/MovieModel");
+
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
 var app = express();
+
+//Cpanel
+const movieCpanelRouter = require("./routes/cpanel/MovieCpanel");
 
 //API
 const accountAPIRouter = require("./routes/api/AccountAPI");
@@ -54,6 +60,9 @@ mongoose
 //   .catch((err) => console.log(">>>>>>>>> DB Error: ", err));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+//Cpanel
+// http://localhost:3000/cpanel/movie
+app.use("/cpanel/movie", movieCpanelRouter);
 
 //API
 // http://localhost:3000/api/account
