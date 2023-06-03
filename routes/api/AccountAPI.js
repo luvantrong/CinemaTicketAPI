@@ -6,12 +6,12 @@ const accountController = require("../../components/accounts/AccountController")
 const uploadFile = require("../../middle/UploadFile");
 const CONFIG = require("../../config/Config");
 
-// const validation = require("../../middle/Validation");
+const validation = require("../../middle/Validation");
 const jwt = require("jsonwebtoken");
 
 // API register account
 // http://localhost:3000/api/account/register
-router.post("/register", async (req, res, next) => {
+router.post("/register", [validation.checkRegister], async (req, res, next) => {
   try {
     const { email, password, name } = req.body;
     const account = await accountController.register(email, password, name);
@@ -29,7 +29,7 @@ router.post("/register", async (req, res, next) => {
 
 // API login account
 // http://localhost:3000/api/account/login
-router.post("/login", async (req, res, next) => {
+router.post("/login", [validation.checkLogin], async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const account = await accountController.login(email, password);
