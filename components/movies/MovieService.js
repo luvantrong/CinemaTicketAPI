@@ -103,7 +103,7 @@ const getMovieById = async (id) => {
 const searchMovieName = async (name) => {
   try {
     return await movieModel.find({
-      name: { $regex: tenPhim, $options: "i" },
+      tenPhim: { $regex: name, $options: "i" },
       // price: { $gte: 10, $lte: 2000 },
       // quantity: { $gt: 10 },
       //< 5 or >50
@@ -121,4 +121,5 @@ module.exports = {
   addNewMovie,
   updateMovie,
   getMovieById,
+  searchMovieName
 };
