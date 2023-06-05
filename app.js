@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 
 //import các model, thứ tự rất quan trọng
 require("./components/movies/MovieModel");
+require("./components/events/EventModel")
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -16,7 +17,7 @@ var app = express();
 
 //Cpanel
 const movieCpanelRouter = require("./routes/cpanel/MovieCpanel");
-
+const eventCpanelRouter = require("./routes/cpanel/EventCpanel");
 //API
 const accountAPIRouter = require("./routes/api/AccountAPI");
 const movieAPIRouter = require("./routes/api/MoviesAPI");
@@ -64,6 +65,9 @@ app.use("/users", usersRouter);
 //Cpanel
 // http://localhost:3000/cpanel/movie
 app.use("/cpanel/movie", movieCpanelRouter);
+
+// http://localhost:3000/cpanel/event
+app.use("/cpanel/event", eventCpanelRouter);
 
 //API
 // http://localhost:3000/api/account
