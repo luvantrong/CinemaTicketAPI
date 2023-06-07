@@ -10,6 +10,7 @@ const mongoose = require("mongoose");
 require("./components/movies/MovieModel");
 require("./components/events/EventModel");
 require("./components/popcorn/PopcornModel");
+require("./components/tickets/TicketModel");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -20,11 +21,14 @@ var app = express();
 const movieCpanelRouter = require("./routes/cpanel/MovieCpanel");
 const eventCpanelRouter = require("./routes/cpanel/EventCpanel");
 const popcornCpanelRouter = require("./routes/cpanel/PopcornCpanel");
+const ticketCpanelRouter = require("./routes/cpanel/TicketCpanel");
+
 //API
 const accountAPIRouter = require("./routes/api/AccountAPI");
 const movieAPIRouter = require("./routes/api/MoviesAPI");
 const eventAPIRouter = require("./routes/api/EventAPI");
 const popcornAPIRouter = require("./routes/api/PopcornAPI");
+const ticketAPIRouter = require("./routes/api/TicketAPI");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -67,6 +71,7 @@ mongoose
 //   .catch((err) => console.log(">>>>>>>>> DB Error: ", err));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+
 //Cpanel
 // http://localhost:3000/cpanel/movie
 app.use("/cpanel/movie", movieCpanelRouter);
@@ -76,6 +81,10 @@ app.use("/cpanel/event", eventCpanelRouter);
 
 // http://localhost:3000/cpanel/popcorn
 app.use("/cpanel/popcorn", popcornCpanelRouter);
+
+// http://localhost:3000/cpanel/ticket
+app.use("/cpanel/ticket", ticketCpanelRouter);
+
 
 
 //API
@@ -87,6 +96,8 @@ app.use("/api/movie", movieAPIRouter);
 app.use("/api/event", eventAPIRouter);
 // http://localhost:3000/api/popcorn
 app.use("/api/popcorn", popcornAPIRouter);
+// http://localhost:3000/api/ticket
+app.use("/api/ticket", ticketAPIRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

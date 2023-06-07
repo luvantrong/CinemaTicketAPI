@@ -11,6 +11,7 @@ const ticketSchema = new Schema({
   suatXem: { type: String },
   bapRang: { type: ObjectId , ref: "popcorn"},
   soLuong: {type: Number},
+  nguoiDung:{type: String}
 });
 
 module.exports =
