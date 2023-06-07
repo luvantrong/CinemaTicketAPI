@@ -151,4 +151,15 @@ router.post(
     }
   }
 );
+// http://localhost:3000/api/account/seach-by-name
+router.post("/seach-by-name",  async (req, res, next) => {
+  try {
+    const { email } = req.body;
+    console.log(email);
+    const products = await accountController.searchProductName(email);
+    return res.status(200).json({ result: true, products: products });
+  } catch (error) {
+    return res.status(400).json({ result: false, products: null });
+  }
+});
 module.exports = router;

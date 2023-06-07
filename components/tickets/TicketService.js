@@ -1,12 +1,25 @@
 const ticketModel = require("./TicketModel");
-//Xem ve phim
+//Xem vé phim theo tài khoản
 const getTicketByAccount = async (email) => {
-
     try {
         // const regex = new RegExp(email, "i");
         return await ticketModel.find({
         nguoiDung: {$regex: email, $options: "i" }
         });
+    } catch (error) {
+        console.log("Get ticket by account error", error);
+        throw error;
+    }
+};
+
+//Xem vé phim theo ngày xem và tên phim
+const getTicketByDateAndNameMovie = async (date, nameMovie) => {
+    try {
+        const regexDate = new RegExp(date, "i");
+        const regexNameMovie = new RegExp(nameMovie, "i");
+        return await ticketModel.find(
+        { $or: [{ "ngayXem": { $regex: regexDate, } }, { "tenPhim": {$regex : regexNameMovie}  }] }
+        );
     } catch (error) {
         console.log("Get ticket by account error", error);
         throw error;
@@ -67,4 +80,5 @@ module.exports = {
     deleteTicketById,
     addNewTicket,
     getAllTicket,
+    getTicketByDateAndNameMovie
 };

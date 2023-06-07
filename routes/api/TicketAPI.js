@@ -4,7 +4,7 @@ const ticketController = require("../../components/tickets/TicketController");
 
 
 // http://localhost:3000/api/ticket/getTicketByAccount
-// Lấy  ticket
+// Lấy  ticket theo tên tài khoản
 router.post("/getTicketByAccount", async function (req, res, next) {
     try {
         const { email } = req.body;
@@ -45,6 +45,17 @@ router.post("/addNewTicket", async function (req, res, next) {
     }
 })
 
+// http://localhost:3000/api/ticket/getTicketByNameAndNameMovie
+// Lấy  ticket theo tên tài khoản
+router.post("/getTicketByNameAndNameMovie", async function (req, res, next) {
+    try {
+        const { date, nameMovie } = req.body;
+        const listTicket = await ticketController.getTicketByDateAndNameMovie(date, nameMovie);
+        return res.status(200).json({ result: true, Ticket: listTicket });
+    } catch (err) {
+        return res.status(500).json({ result: false, movies: null });
+    }
+});
 
 
 module.exports = router;

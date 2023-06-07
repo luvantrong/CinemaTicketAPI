@@ -7,9 +7,20 @@ const getTicketByAccount = async (email) => {
       throw error;
     }
   };
+
+  //Lấy tất cả danh sách vé
   const getAllTicket = async () => {
     try {
       return await ticketService.getAllTicket();
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  //Lấy danh sách vé theo ngày và tên phim
+  const getTicketByDateAndNameMovie = async (date, nameMovie) => {
+    try {
+      return await ticketService.getTicketByDateAndNameMovie(date, nameMovie);
     } catch (error) {
       throw error;
     }
@@ -54,4 +65,5 @@ const getTicketByAccount = async (email) => {
     deleteTicketById,
     addNewTicket,
     getAllTicket,
+    getTicketByDateAndNameMovie
     };
