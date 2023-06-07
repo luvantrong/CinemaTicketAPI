@@ -624,13 +624,14 @@
             <ul class="notika-main-menu-dropdown">
               <li><a href="/cpanel/movie">Movies</a></li>
               <li><a href="/cpanel/event">Events</a></li>
+              <li><a href="/cpanel/popcorn">Popcorns</a></li>
             </ul>
           </div>
           <div id="Forms" class="tab-pane notika-tab-menu-bg animated flipInX">
             <ul class="notika-main-menu-dropdown">
               <li><a href="/cpanel/movie/new">Add New Movie</a></li>
               <li><a href="/cpanel/event/new">Add New Event</a></li>
-              <li><a href="form-examples.html">Form Examples</a></li>
+              <li><a href="/cpanel/popcorn/new">Add New Popcorn</a></li>
             </ul>
           </div>
           <!-- <div
@@ -759,7 +760,7 @@
             type="number"
           />
         </div>
-         <div class="form-group">
+        <div class="form-group">
           <label>Loại phim: </label>
           <select class="form-control" name="loaiPhim">
             {{#each loaiPhim}}
@@ -767,7 +768,7 @@
             {{/each}}
           </select>
         </div>
-         <div class="form-group">
+        <div class="form-group">
           <label>Dạng phim:</label>
           <input
             class="form-control"
@@ -776,7 +777,7 @@
             type="text"
           />
         </div>
-         <div class="form-group">
+        <div class="form-group">
           <label>Ngày khởi chiếu:</label>
           <input
             class="form-control"
@@ -785,13 +786,22 @@
             type="text"
           />
         </div>
-         <div class="form-group">
+        <div class="form-group">
           <label>Mô tả:</label>
           <input
             class="form-control"
             name="moTa"
             placeholder="Mô tả"
             type="text"
+          />
+        </div>
+        <div class="form-group">
+          <label>Giá vé:</label>
+          <input
+            class="form-control"
+            name="giaVe"
+            placeholder="Giá vé"
+            type="Number"
           />
         </div>
         <div class="form-group">

@@ -25,7 +25,8 @@ const addNewMovie = async (
   dangPhim,
   ngayKhoiChieu,
   anhBia,
-  moTa
+  moTa,
+  giaVe
 ) => {
   try {
     return await movieService.addNewMovie(
@@ -37,7 +38,8 @@ const addNewMovie = async (
       dangPhim,
       ngayKhoiChieu,
       anhBia,
-      moTa
+      moTa,
+      giaVe
     );
   } catch (error) {
     console.log("Add new movie failed", error);
@@ -55,7 +57,8 @@ const updateMovie = async (
   dangPhim,
   ngayKhoiChieu,
   anhBia,
-  moTa
+  moTa,
+  giaVe
 ) => {
   try {
     return await movieService.updateMovie(
@@ -68,7 +71,8 @@ const updateMovie = async (
       dangPhim,
       ngayKhoiChieu,
       anhBia,
-      moTa
+      moTa,
+      giaVe
     );
   } catch (error) {
     console.log("Update movie failed", error);

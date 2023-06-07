@@ -8,7 +8,8 @@ const mongoose = require("mongoose");
 
 //import các model, thứ tự rất quan trọng
 require("./components/movies/MovieModel");
-require("./components/events/EventModel")
+require("./components/events/EventModel");
+require("./components/popcorn/PopcornModel");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -18,10 +19,13 @@ var app = express();
 //Cpanel
 const movieCpanelRouter = require("./routes/cpanel/MovieCpanel");
 const eventCpanelRouter = require("./routes/cpanel/EventCpanel");
+const popcornCpanelRouter = require("./routes/cpanel/PopcornCpanel");
 //API
 const accountAPIRouter = require("./routes/api/AccountAPI");
 const movieAPIRouter = require("./routes/api/MoviesAPI");
-const eventAPIRouter = require("./routes/api/EventAPI"); 
+const eventAPIRouter = require("./routes/api/EventAPI");
+const popcornAPIRouter = require("./routes/api/PopcornAPI");
+
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
@@ -70,13 +74,19 @@ app.use("/cpanel/movie", movieCpanelRouter);
 // http://localhost:3000/cpanel/event
 app.use("/cpanel/event", eventCpanelRouter);
 
+// http://localhost:3000/cpanel/popcorn
+app.use("/cpanel/popcorn", popcornCpanelRouter);
+
+
 //API
 // http://localhost:3000/api/account
 app.use("/api/account", accountAPIRouter);
 // http://localhost:3000/api/movie
-app.use('/api/movie', movieAPIRouter);
+app.use("/api/movie", movieAPIRouter);
 // http://localhost:3000/api/event
-app.use('/api/event', eventAPIRouter);
+app.use("/api/event", eventAPIRouter);
+// http://localhost:3000/api/popcorn
+app.use("/api/popcorn", popcornAPIRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

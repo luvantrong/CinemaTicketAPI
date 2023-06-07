@@ -51,7 +51,8 @@ router.post(
         dangPhim,
         ngayKhoiChieu,
         anhBia,
-        moTa } = body;
+        moTa,
+        giaVe } = body;
 
       const result = await movieController.addNewMovie(
         tenPhim,
@@ -62,7 +63,8 @@ router.post(
         dangPhim,
         ngayKhoiChieu,
         anhBia,
-        moTa
+        moTa,
+        giaVe
       );
       console.log(">>>new body a", body);
       console.log(">>>result", result);
@@ -139,7 +141,8 @@ router.post(
         dangPhim,
         ngayKhoiChieu,
         anhBia,
-        moTa } = body;
+        moTa,
+        giaVe } = body;
       console.log(">>>update body", body);
       const result = await movieController.updateMovie(
         id,
@@ -151,7 +154,8 @@ router.post(
         dangPhim,
         ngayKhoiChieu,
         anhBia,
-        moTa
+        moTa,
+        giaVe
       );
 
       console.log(">>>result", result);

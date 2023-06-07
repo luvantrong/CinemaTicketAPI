@@ -13,7 +13,7 @@ const movieSchema = new Schema({
   ngayKhoiChieu: { type: String },
   anhBia: { type: String },
   moTa: { type: String },
-  //   category: { type: ObjectId, ref: "category" },
+  giaVe: { type: Number },
 });
 
 module.exports = mongoose.models.movie || mongoose.model("movie", movieSchema);

@@ -622,9 +622,9 @@
           </div>
           <div id="Tables" class="tab-pane notika-tab-menu-bg animated flipInX">
             <ul class="notika-main-menu-dropdown">
-             <li><a href="/cpanel/movie">Movies</a></li>
-                <li><a href="/cpanel/event">Events</a></li>
-                <li><a href="/cpanel/popcorn">Popcorns</a></li>
+               <li><a href="/cpanel/movie">Movies</a></li>
+              <li><a href="/cpanel/event">Events</a></li>
+               <li><a href="/cpanel/popcorn">Popcorn</a></li>
             </ul>
           </div>
           <div id="Forms" class="tab-pane notika-tab-menu-bg animated flipInX">
@@ -684,7 +684,7 @@
                   <i class="notika-icon notika-bar-chart"></i>
                 </div>
                 <div class="breadcomb-ctn">
-                  <h2>New Product</h2>
+                  <h2>New Movie</h2>
                   <p>
                     Welcome to Notika
                     <span class="bread-ntd">Admin Template</span>
@@ -715,111 +715,49 @@
 <!-- Breadcomb area End-->
 <!-- Bar Chart area End-->
 <div class="container">
-  <h1>Movie Information</h1>
+  <h1>Event Information</h1>
   <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
       <form
-        role="form"
+       role="form"
         method="post"
-        action="/cpanel/movie/{{movie._id}}/edit"
+        action="/cpanel/popcorn/{{popcorn._id}}/edit"
         enctype="multipart/form-data"
       >
         <div class="form-group">
-          <label>Tên phim:</label>
+          <label>Tên bắp rang:</label>
           <input
             class="form-control"
-            name="tenPhim"
-            placeholder="Tên phim"
+            name="name"
+            placeholder="Tên bắp rang"
             type="text"
-            value="{{movie.tenPhim}}"
+             value="{{popcorn.name}}"
           />
         </div>
         <div class="form-group">
-          <label>Đạo diễn:</label>
+          <label>Giá bắp rang:</label>
           <input
             class="form-control"
-            name="daoDien"
-            placeholder="Đạo diễn"
-            type="text"
-            value="{{movie.daoDien}}"
-          />
-        </div>
-        <div class="form-group">
-          <label>Quốc gia:</label>
-          <input
-            class="form-control"
-            name="quocGia"
-            placeholder="Quốc gia"
-            type="text"
-            value="{{movie.quocGia}}"
-          />
-        </div>
-        <div class="form-group">
-          <label>Thời lượng:</label>
-          <input
-            class="form-control"
-            name="thoiLuong"
-            placeholder="Thời lượng"
+            name="price"
+            placeholder="Giá bắp rang"
             type="number"
-            value="{{movie.thoiLuong}}"
+             value="{{popcorn.price}}"
           />
         </div>
-        <div class="form-group">
-          <label>Loại phim: </label>
-          <select class="form-control" name="loaiPhim">
-            {{#each loaiPhim}}
-              {{#if this.selected}}
-                <option selected value="{{this.lp}}">{{this.lp}}</option>
-              {{else}}
-                <option value="{{this.lp}}">{{this.lp}}</option>
-              {{/if}}
-            {{/each}}
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Dạng phim:</label>
+         <div class="form-group">
+          <label>Thông tin bắp rang:</label>
           <input
             class="form-control"
-            name="dangPhim"
-            placeholder="Dạng phim"
+            name="content"
+            placeholder="Giá bắp rang"
             type="text"
-            value="{{movie.dangPhim}}"
+             value="{{popcorn.content}}"
           />
         </div>
         <div class="form-group">
-          <label>Ngày khởi chiếu:</label>
-          <input
-            class="form-control"
-            name="ngayKhoiChieu"
-            placeholder="Ngày khởi chiếu"
-            type="text"
-            value="{{movie.ngayKhoiChieu}}"
-          />
-        </div>
-        <div class="form-group">
-          <label>Mô tả:</label>
-          <input
-            class="form-control"
-            name="moTa"
-            placeholder="Mô tả"
-            type="text"
-            value="{{movie.moTa}}"
-          />
-        </div>
-        <div class="form-group">
-          <label>Giá vé:</label>
-          <input
-            class="form-control"
-            name="giaVe"
-            placeholder="Giá vé"
-            type="Number"
-            value="{{movie.giaVe}}"
-          />
-        </div>
-        <div class="form-group">
-          <label>Ảnh bìa phim:</label>
+          <label>Ảnh bắp rang:</label>
           <input onchange="displayImg(this)" type="file" name="image" />
-          <img id="img" src="{{movie.anhBia}}" width="100" height="100" />
+          <img id="img" src="{{popcorn.image}}" width="100" height="100" />
         </div>
 
         <button type="submit" class="btn btn-default">
@@ -847,13 +785,5 @@
     </div>
   </div>
 </div>
-
-<script>
-  const displayImg = (input) => { if (input.files && input.files[0]) { var
-  reader = new FileReader(); reader.onload = function (e) {
-  $('#img').attr('src', e.target.result); }
-  reader.readAsDataURL(input.files[0]); } }
-
-</script>
 
 <!-- End Footer area-->

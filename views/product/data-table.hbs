@@ -565,15 +565,16 @@
             class="tab-pane active notika-tab-menu-bg animated flipInX"
           >
             <ul class="notika-main-menu-dropdown">
-              <li><a href="normal-table.html">Normal Table</a></li>
-              <li><a href="/cpanel/movie">Data Table</a></li>
+              <li><a href="/cpanel/movie">Movies</a></li>
+                <li><a href="/cpanel/event">Events</a></li>
+                <li><a href="/cpanel/popcorn">Popcorns</a></li>
             </ul>
           </div>
           <div id="Forms" class="tab-pane notika-tab-menu-bg animated flipInX">
             <ul class="notika-main-menu-dropdown">
-              <li><a href="/cpanel/movie/new">Add New Movie</a></li>
-              <li><a href="form-components.html">Form Components</a></li>
-              <li><a href="form-examples.html">Form Examples</a></li>
+                <li><a href="/cpanel/movie/new">Add New Movie</a></li>
+              <li><a href="/cpanel/event/new">Add New Event</a></li>
+              <li><a href="/cpanel/popcorn/new">Add New Popcorn</a></li>
             </ul>
           </div>
           <!-- <div
@@ -678,6 +679,7 @@
                   <th>Ngày khởi chiếu</th>
                   <th>Ảnh bìa</th>
                   <th>Mô tả</th>
+                  <th>Giá vé</th>
                 </tr>
               </thead>
               <tbody>
@@ -699,6 +701,7 @@
                       />
                     </td>
                     <td>{{this.moTa}}</td>
+                    <td>{{this.giaVe}}</td>
                     <td>
                       <a
                         href="/cpanel/movie/{{this._id}}/edit"
@@ -726,6 +729,7 @@
                   <th>Ngày khởi chiếu</th>
                   <th>Ảnh bìa</th>
                   <th>Mô tả</th>
+                  <th>Giá vé</th>
                 </tr>
               </tfoot>
             </table>

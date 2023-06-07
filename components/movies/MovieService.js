@@ -31,7 +31,8 @@ const addNewMovie = async (
   dangPhim,
   ngayKhoiChieu,
   anhBia,
-  moTa
+  moTa,
+  giaVe
 ) => {
   try {
     const newMovie = {
@@ -44,6 +45,7 @@ const addNewMovie = async (
       ngayKhoiChieu,
       anhBia,
       moTa,
+      giaVe
     };
     const p = new movieModel(newMovie);
     await p.save();
@@ -65,7 +67,8 @@ const updateMovie = async (
   dangPhim,
   ngayKhoiChieu,
   anhBia,
-  moTa
+  moTa, 
+  giaVe
 ) => {
   try {
     const movie = await movieModel.findById(id);
@@ -79,6 +82,7 @@ const updateMovie = async (
       movie.ngayKhoiChieu = ngayKhoiChieu ? ngayKhoiChieu : movie.ngayKhoiChieu;
       movie.anhBia = anhBia ? anhBia : movie.anhBia;
       movie.moTa = moTa ? moTa : movie.moTa;
+      movie.giaVe = giaVe ? giaVe : movie.giaVe;
       await movie.save();
       return true;
     }
@@ -103,7 +107,7 @@ const getMovieById = async (id) => {
 const searchMovieName = async (name) => {
   try {
     return await movieModel.find({
-      tenPhim: { $regex: name, $options: "i" },
+      tenPhim: { $regex: tenPhim, $options: "i" },
       // price: { $gte: 10, $lte: 2000 },
       // quantity: { $gt: 10 },
       //< 5 or >50
