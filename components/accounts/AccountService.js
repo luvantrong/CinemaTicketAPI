@@ -103,5 +103,19 @@ const updateAccount = async (
     return false;
   }
 };
+//Lấy danh sách tài khoản
+const getAccount = async () => {
+  try {
+    const accounts = await accountModel.find({
+      role: { $gte: 1, $lte: 99 },
+    }
 
-module.exports = { register, login, updatePassword, updateAccount };
+    );
+    return accounts;
+  } catch (error) {
+    console.log("Get account failed", error);
+    return [];
+  }
+};
+
+module.exports = { register, login, updatePassword, updateAccount,getAccount };

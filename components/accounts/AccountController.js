@@ -63,4 +63,12 @@ const updateAccount = async (
     console.log("Update account failed", error);
   }
 };
-module.exports = { register, login, updatePassword, updateAccount };
+const getAccount = async () => {
+  try {
+    return await accountService.getAccount();
+  } catch (error) {
+    console.log("Get account by id failed", error);
+  }
+  return null;
+};
+module.exports = { register, login, updatePassword, updateAccount, getAccount };

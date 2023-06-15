@@ -22,6 +22,7 @@ const movieCpanelRouter = require("./routes/cpanel/MovieCpanel");
 const eventCpanelRouter = require("./routes/cpanel/EventCpanel");
 const popcornCpanelRouter = require("./routes/cpanel/PopcornCpanel");
 const ticketCpanelRouter = require("./routes/cpanel/TicketCpanel");
+const accountCpanelRouter = require("./routes/cpanel/AccountCpanel");
 
 //API
 const accountAPIRouter = require("./routes/api/AccountAPI");
@@ -84,6 +85,9 @@ app.use("/cpanel/popcorn", popcornCpanelRouter);
 
 // http://localhost:3000/cpanel/ticket
 app.use("/cpanel/ticket", ticketCpanelRouter);
+
+// http://localhost:3000/cpanel/account
+app.use("/cpanel/account", accountCpanelRouter);
 
 
 
