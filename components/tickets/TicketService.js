@@ -1,4 +1,5 @@
 const ticketModel = require("./TicketModel");
+
 //Xem vé phim theo tài khoản
 const getTicketByAccount = async (email) => {
     try {
@@ -75,10 +76,24 @@ const getAllTicket = async () => {
         throw error;
     }
 };
+
+const getTickets = async () => {
+    try {
+        return await ticketModel
+          .find({}, "tenPhim giaVe soLuong")
+        //   .populate( "tenPhim")
+          .sort({ tenPhim: 1 })
+
+      } catch (error) {
+        console.log("Get ticket error", error);
+        throw error;
+      }
+};
 module.exports = {
     getTicketByAccount,
     deleteTicketById,
     addNewTicket,
     getAllTicket,
-    getTicketByDateAndNameMovie
+    getTicketByDateAndNameMovie,
+    getTickets,
 };

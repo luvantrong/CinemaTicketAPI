@@ -60,10 +60,19 @@ const getTicketByAccount = async (email) => {
       return false;
     }
   };
+  const getTickets = async (req, res) => {
+    try {
+      return await ticketService.getTickets();
+      
+    } catch (error) {
+      return false;
+    }
+  };
   module.exports = {
     getTicketByAccount,
     deleteTicketById,
     addNewTicket,
     getAllTicket,
-    getTicketByDateAndNameMovie
+    getTicketByDateAndNameMovie,
+    getTickets,
     };

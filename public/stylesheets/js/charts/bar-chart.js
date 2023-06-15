@@ -1,14 +1,20 @@
+
+
 (function ($) {
+	
  "use strict";
 	 /*----------------------------------------*/
 	/*  1.  Bar Chart
 	/*----------------------------------------*/
-
+	
+	
 	var ctx = document.getElementById("barchart1");
+	
 	var barchart1 = new Chart(ctx, {
+		
 		type: 'bar',
 		data: {
-			labels: ["Red", "Blue", "Yellow", "Green"],
+			labels:["January", "February", "March", "April", "May", "June"],
 			datasets: [{
 				label: 'Bar Chart',
 				data: [12, 19, 3, 5, 2, 3],
