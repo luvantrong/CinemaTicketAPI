@@ -118,6 +118,20 @@ const searchMovieName = async (name) => {
   }
   return null;
 };
+const getAllMovies_v2 = async (page, size) => {
+  try {
+    
+    return await movieModel
+      .find({}, "tenPhim ")
+      .populate( "tenPhim")
+      .sort({ tenPhim: 1 })
+    
+     
+  } catch (error) {
+    console.log("Get all movies error", error);
+    throw error;
+  }
+};
 
 
 module.exports = {
@@ -126,5 +140,6 @@ module.exports = {
   addNewMovie,
   updateMovie,
   getMovieById,
-  searchMovieName
+  searchMovieName,
+  getAllMovies_v2
 };

@@ -95,6 +95,13 @@ const searchMovieName = async (name) => {
   }
   return null;
 };
+const getAllMovies_v2 = async (page, size) => {
+  try {
+    return await movieService.getAllMovies_v2(page, size);
+  } catch (error) {
+    console.log("Get all movies error", error);
+  }
+};
 
 module.exports = {
   getAllMovies,
@@ -103,4 +110,5 @@ module.exports = {
   updateMovie,
   getMovieById,
   searchMovieName,
+  getAllMovies_v2,
 };
