@@ -119,6 +119,7 @@ const searchMovieName = async (name) => {
   return null;
 };
 
+
 module.exports = {
   getAllMovies,
   deleteMovieById,
