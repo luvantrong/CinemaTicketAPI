@@ -29,7 +29,7 @@ router.post("/:id/delete", [auth.authetWeb], async (req, res, next) => {
 router.get("/thongke", async (req, res, next) => {
   try {
     const movieName = await moviewController.getAllMovies_v2();
-    const tickets = await ticketController.getTickets();
+    const tickets = await ticketController.getAllTicket();
     let tongDoanhThu = 0;
     for (let index = 0; index < tickets.length; index++) {
       tongDoanhThu += tickets[index].giaVe;
@@ -41,58 +41,54 @@ router.get("/thongke", async (req, res, next) => {
       danhSachPhim.push(movieName[i].tenPhim);
     }
 
-    let tien = [];
-    let tongDoanhThuTheoPhim = [];
-    for (let i = 0; i < danhSachPhim.length; i++) {
-      let t = 0;
-      for (let j = 0; j < tickets.length; j++) {
+    // let tien = [];
+    // let tongDoanhThuTheoPhim = [];
+    // for (let i = 0; i < danhSachPhim.length; i++) {
+    //   let t = 0;
+    //   for (let j = 0; j < tickets.length; j++) {
 
-        if (danhSachPhim[i] == tickets[j].tenPhim) {
-          t += tickets[j].giaVe;
-        }
-      }
-      tongDoanhThuTheoPhim[i] = danhSachPhim[i] + ": " + t;
-      tien.push(t);
+    //     if (danhSachPhim[i] == tickets[j].tenPhim) {
+    //       t += tickets[j].giaVe;
+    //     }
+    //   }
+    //   tongDoanhThuTheoPhim[i] = danhSachPhim[i] + ": " + t;
+    //   tien.push(t);
 
+    // }
+    const tongDoanhThuTheoPhim = tinhTongDoanhThuTheoPhim(tickets, danhSachPhim)
+
+    const entriesArray = Object.entries(tongDoanhThuTheoPhim);
+    let dsTK = [];
+
+    for (let index = 0; index < entriesArray.length; index++) {
+      const element = entriesArray[index];
+      const myObject = {
+        tenPhim: element[0],
+        tongDoanhThu: element[1],
+      };
+      dsTK.push(myObject);
     }
-    // const tongDoanhThuTheoPhim = tinhTongDoanhThuTheoPhim(tickets, danhSachPhim)
 
-    // return res.status(200).json({ result: true, tongDoanhThu: tongDoanhThu, tien: tien,tongDoanhThuTheoPhim:tongDoanhThuTheoPhim});
-    res.render("account/bar-charts",{danhSachPhim,tien});
+
     
 
-
-    // const data = {
-    //   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-    //   datasets: [{
-    //     label: 'Dataset 1',
-    //     backgroundColor: 'rgba(255, 99, 132, 0.2)',
-    //     borderColor: 'rgba(255, 99, 132, 1)',
-    //     borderWidth: 1,
-    //     data: [10, 20, 30, 40, 50, 60, 70]
-    //   }, {
-    //     label: 'Dataset 2',
-    //     backgroundColor: 'rgba(54, 162, 235, 0.2)',
-    //     borderColor: 'rgba(54, 162, 235, 1)',
-    //     borderWidth: 1,
-    //     data: [20, 30, 40, 50, 60, 70, 80]
-    //   }]
-    // };
-    // res.json(data);
+    // return res.status(200).json({ result: true, tongDoanhThu: tongDoanhThu, tien: tien,tongDoanhThuTheoPhim:tongDoanhThuTheoPhim});
+    res.render("ticket/data-table2",{ds: dsTK, tongDoanhThu: tongDoanhThu});
+    // res.json({results: true, status: 200, ds: dsTK});
 
   } catch (error) {
     res.json({ result: false });
   }
 });
 
-// function tinhTongDoanhThuTheoPhim(tickets, danhSachPhim) {
-//   const tongDoanhThuTheoPhim = {};
-//   danhSachPhim.forEach(tenPhim => {
-//     tongDoanhThuTheoPhim[tenPhim] = 0;
-//   });
-//   tickets.forEach(v => {
-//     tongDoanhThuTheoPhim[v.tenPhim] += tickets.giaVe;
-//   });
-//   return tongDoanhThuTheoPhim;
-// }
+function tinhTongDoanhThuTheoPhim(tickets, danhSachPhim) {
+  const tongDoanhThuTheoPhim = {};
+  danhSachPhim.forEach(tenPhim => {
+    tongDoanhThuTheoPhim[tenPhim] = 0;
+  });
+  tickets.forEach(v => {
+    tongDoanhThuTheoPhim[v.tenPhim] += v.giaVe;
+  });
+  return tongDoanhThuTheoPhim;
+}
 module.exports = router;
